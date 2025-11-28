@@ -32,7 +32,8 @@ const GroceryList = () => {
   }).filter((section) => section.data.length > 0);
 
   return (
-    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
+    <SafeAreaView style={styles.container}>
+      {/* Search Bar */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -41,6 +42,8 @@ const GroceryList = () => {
           onChangeText={setSearchText}
         />
       </View>
+
+      {/* Section List */}
       <SectionList
         sections={filteredData}
         keyExtractor={(item, index) => item + index}
@@ -70,7 +73,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderBottomWidth: 1,
     borderBottomColor: "#eee",
-    // Ensure it's visible
     zIndex: 1,
   },
   searchInput: {
@@ -101,10 +103,7 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     borderRadius: 12,
     shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
     elevation: 5,

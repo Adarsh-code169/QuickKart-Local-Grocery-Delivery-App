@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions } from "rea
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
-export default function HomePage() {
+export default function HomePage({ onGetStarted }) {
   const photos = [
     "https://cdn.pixabay.com/photo/2020/05/22/03/10/vegetables-5203555_1280.jpg",
     "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D",
@@ -14,9 +14,9 @@ export default function HomePage() {
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       {/* Full Screen Image Slider */}
       <View style={{ flex: 1 }}>
-        <ScrollView 
-          pagingEnabled 
-          horizontal 
+        <ScrollView
+          pagingEnabled
+          horizontal
           showsHorizontalScrollIndicator={false}
           style={{ flex: 1 }}
         >
@@ -24,10 +24,10 @@ export default function HomePage() {
             <View key={index} style={{ position: 'relative' }}>
               <Image
                 source={{ uri: img }}
-                style={{ 
-                  width: screenWidth, 
+                style={{
+                  width: screenWidth,
                   height: screenHeight,
-                  resizeMode: "cover" 
+                  resizeMode: "cover"
                 }}
               />
             </View>
@@ -36,7 +36,7 @@ export default function HomePage() {
       </View>
 
       {/* Text Content Overlay - Directly on photos */}
-      <View 
+      <View
         style={{
           position: "absolute",
           bottom: 100,
@@ -45,9 +45,9 @@ export default function HomePage() {
           alignItems: "center",
         }}
       >
-        <Text style={{ 
-          fontSize: 32, 
-          fontWeight: "700", 
+        <Text style={{
+          fontSize: 32,
+          fontWeight: "700",
           marginBottom: 15,
           textAlign: "center",
           lineHeight: 38,
@@ -58,10 +58,10 @@ export default function HomePage() {
         }}>
           Fast delivery{"\n"}of delicious food
         </Text>
-        
-        <Text style={{ 
-          fontSize: 16, 
-          color: "white", 
+
+        <Text style={{
+          fontSize: 16,
+          color: "white",
           marginBottom: 30,
           textAlign: "center",
           lineHeight: 22,
@@ -89,11 +89,12 @@ export default function HomePage() {
             shadowRadius: 4.65,
             elevation: 8,
           }}
+          onPress={onGetStarted}
         >
-          <Text style={{ 
-            color: "white", 
-            fontSize: 18, 
-            fontWeight: "600" 
+          <Text style={{
+            color: "white",
+            fontSize: 18,
+            fontWeight: "600"
           }}>
             Get started
           </Text>
