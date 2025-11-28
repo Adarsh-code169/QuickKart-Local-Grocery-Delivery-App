@@ -1,13 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import GroceryList from "./components/GroceryList";
-import HomePage from "./ComPages/HomePage";
+import Navigation from "./ComPages/Navigation";
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <HomePage />
+      <Navigation />
       <StatusBar style="auto" />
     </SafeAreaProvider>
   );
