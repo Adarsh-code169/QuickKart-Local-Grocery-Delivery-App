@@ -13,234 +13,52 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import OrderHistory from '../components/OrderHistory';
 
+import { CATEGORIES } from "../data/categories";
+import { fruitsData } from "../data/fruits";
+import { vegetablesData } from "../data/vegetables";
+import { dairyData } from "../data/dairy";
+import { bakeryData } from "../data/bakery";
+import { snacksData } from "../data/snacks";
+import { beveragesData } from "../data/beverages";
+import { meatData } from "../data/meat";
+
+// Construct GROCERY_DATA from imported files
 const GROCERY_DATA = [
     {
         title: "Popular",
         data: [
-            {
-                name: "Avocado",
-                price: "₹120",
-                weight: "each",
-                image: "https://placehold.co/150/90EE90/FFFFFF?text=Avocado",
-            },
-            {
-                name: "Bananas",
-                price: "₹60",
-                weight: "dozen",
-                image: "https://placehold.co/150/FFD93D/FFFFFF?text=Banana",
-            },
-            {
-                name: "Milk",
-                price: "₹70",
-                weight: "1 L",
-                image: "https://placehold.co/150/74B9FF/FFFFFF?text=Milk",
-            },
-            {
-                name: "Bread",
-                price: "₹50",
-                weight: "loaf",
-                image: "https://placehold.co/150/F5CBA7/FFFFFF?text=Bread",
-            },
+            ...fruitsData.slice(0, 2),
+            ...vegetablesData.slice(0, 2),
+            ...dairyData.slice(0, 2),
         ],
     },
     {
         title: "Fruits",
-        data: [
-            {
-                name: "Apples",
-                price: "₹180",
-                weight: "1 kg",
-                image: "https://placehold.co/150/FF6B6B/FFFFFF?text=Apple",
-            },
-            {
-                name: "Oranges",
-                price: "₹150",
-                weight: "1 kg",
-                image: "https://placehold.co/150/FF9F43/FFFFFF?text=Orange",
-            },
-            {
-                name: "Grapes",
-                price: "₹120",
-                weight: "500g",
-                image: "https://placehold.co/150/6C5CE7/FFFFFF?text=Grape",
-            },
-            {
-                name: "Berries",
-                price: "₹300",
-                weight: "pack",
-                image: "https://placehold.co/150/E84393/FFFFFF?text=Berry",
-            },
-        ],
+        data: fruitsData,
     },
     {
         title: "Vegetables",
-        data: [
-            {
-                name: "Carrots",
-                price: "₹60",
-                weight: "1 kg",
-                image: "https://placehold.co/150/E17055/FFFFFF?text=Carrot",
-            },
-            {
-                name: "Broccoli",
-                price: "₹80",
-                weight: "head",
-                image: "https://placehold.co/150/00B894/FFFFFF?text=Broccoli",
-            },
-            {
-                name: "Spinach",
-                price: "₹40",
-                weight: "bunch",
-                image: "https://placehold.co/150/55EFC4/FFFFFF?text=Spinach",
-            },
-            {
-                name: "Potatoes",
-                price: "₹50",
-                weight: "1 kg",
-                image: "https://placehold.co/150/B2BEC3/FFFFFF?text=Potato",
-            },
-        ],
+        data: vegetablesData,
     },
     {
-        title: "Dairy & Eggs",
-        data: [
-            {
-                name: "Milk",
-                price: "₹70",
-                weight: "1 L",
-                image: "https://placehold.co/150/74B9FF/FFFFFF?text=Milk",
-            },
-            {
-                name: "Cheese",
-                price: "₹250",
-                weight: "block",
-                image: "https://placehold.co/150/FAB1A0/FFFFFF?text=Cheese",
-            },
-            {
-                name: "Yogurt",
-                price: "₹40",
-                weight: "cup",
-                image: "https://placehold.co/150/A29BFE/FFFFFF?text=Yogurt",
-            },
-            {
-                name: "Eggs",
-                price: "₹90",
-                weight: "dozen",
-                image: "https://placehold.co/150/FFEAA7/FFFFFF?text=Eggs",
-            },
-        ],
+        title: "Dairy", // Matches "Dairy" in categories.js (was "Dairy & Eggs")
+        data: dairyData,
     },
     {
         title: "Bakery",
-        data: [
-            {
-                name: "Bread",
-                price: "₹50",
-                weight: "loaf",
-                image: "https://placehold.co/150/F5CBA7/FFFFFF?text=Bread",
-            },
-            {
-                name: "Bagels",
-                price: "₹150",
-                weight: "6 pack",
-                image: "https://placehold.co/150/E67E22/FFFFFF?text=Bagel",
-            },
-            {
-                name: "Croissants",
-                price: "₹200",
-                weight: "4 pack",
-                image: "https://placehold.co/150/D35400/FFFFFF?text=Croissant",
-            },
-        ],
+        data: bakeryData,
     },
     {
         title: "Snacks",
-        data: [
-            {
-                name: "Chips",
-                price: "₹40",
-                weight: "bag",
-                image: "https://placehold.co/150/FF7675/FFFFFF?text=Chips",
-            },
-            {
-                name: "Popcorn",
-                price: "₹60",
-                weight: "bag",
-                image: "https://placehold.co/150/FDCB6E/FFFFFF?text=Popcorn",
-            },
-            {
-                name: "Cookies",
-                price: "₹100",
-                weight: "pack",
-                image: "https://placehold.co/150/6C5CE7/FFFFFF?text=Cookie",
-            },
-        ],
+        data: snacksData,
     },
     {
         title: "Beverages",
-        data: [
-            {
-                name: "Orange Juice",
-                price: "₹150",
-                weight: "1 L",
-                image: "https://placehold.co/150/FFA502/FFFFFF?text=Juice",
-            },
-            {
-                name: "Soda",
-                price: "₹90",
-                weight: "2 L",
-                image: "https://placehold.co/150/FF6348/FFFFFF?text=Soda",
-            },
-            {
-                name: "Water",
-                price: "₹40",
-                weight: "1 L",
-                image: "https://placehold.co/150/74B9FF/FFFFFF?text=Water",
-            },
-        ],
-    },
-];
-
-const CATEGORIES = [
-    {
-        name: "All",
-        image: "https://placehold.co/100/95a5a6/FFFFFF?text=All",
-        color: "#F2F3F4",
+        data: beveragesData,
     },
     {
-        name: "Popular",
-        image: "https://placehold.co/100/f39c12/FFFFFF?text=Pop",
-        color: "#FEF5E7",
-    },
-    {
-        name: "Fruits",
-        image: "https://placehold.co/100/e74c3c/FFFFFF?text=F",
-        color: "#FDEDEC",
-    },
-    {
-        name: "Vegetables",
-        image: "https://placehold.co/100/2ecc71/FFFFFF?text=V",
-        color: "#E8F8F5",
-    },
-    {
-        name: "Dairy & Eggs",
-        image: "https://placehold.co/100/3498db/FFFFFF?text=D",
-        color: "#EBF5FB",
-    },
-    {
-        name: "Bakery",
-        image: "https://placehold.co/100/f1c40f/FFFFFF?text=B",
-        color: "#FEF9E7",
-    },
-    {
-        name: "Snacks",
-        image: "https://placehold.co/100/9b59b6/FFFFFF?text=S",
-        color: "#F4ECF7",
-    },
-    {
-        name: "Beverages",
-        image: "https://placehold.co/100/34495e/FFFFFF?text=Dr",
-        color: "#EBEDEF",
+        title: "Meat",
+        data: meatData,
     },
 ];
 
@@ -341,7 +159,7 @@ export default function MainPage() {
                         ]}
                         onPress={() => setSelectedCategory(cat.name)}
                     >
-                        <Image source={{ uri: cat.image }} style={styles.categoryImage} />
+                        <Ionicons name={cat.icon} size={24} color="#1A1A1A" style={{ marginBottom: 8 }} />
                         <Text style={styles.categoryName}>{cat.name}</Text>
                     </TouchableOpacity>
                 ))}
@@ -398,7 +216,7 @@ export default function MainPage() {
                                         onPress={() => setSelectedCategory(cat.name)}
                                     >
                                         <View style={[styles.gridIconContainer, { backgroundColor: cat.color }]}>
-                                            <Image source={{ uri: cat.image }} style={styles.gridIcon} />
+                                            <Ionicons name={cat.icon} size={30} color="#1A1A1A" />
                                         </View>
                                         <Text style={styles.gridCategoryName}>{cat.name}</Text>
                                     </TouchableOpacity>
